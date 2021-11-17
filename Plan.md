@@ -21,7 +21,7 @@
     - 1 replica
     - Set ```containerPort``` to ```5672```
 --- 
-## Classifier
+## Playlist Generator
 - [ ] Write Python script that will accept REST API requests from RabbitMQ queue, update user's model, and generate playlist based on updated model
 - [ ] Make Dockerfile
 - [ ] Make Kubernetes deployment file
@@ -63,3 +63,6 @@ Test, and train model locally. Then save base model in Firestore for use as base
 - [ ] Train model
 - [ ] Marshall model
 - [ ] Save model in Firestore
+
+## Ingress
+- [ ] Write Kubernetes ingress
