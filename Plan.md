@@ -6,7 +6,17 @@
 Test, and train model locally. Then save base model in Firestore for use as base model
 - [ ] Get model from Github
 - [ ] Marshall model, and save in Firestore
-  
+
+---
+## FirebaseSaver
+- [x] Make Kubernetes service file
+    - Open service on port(and targetPort) ```8080```
+    - Set DNS name to ```firebase_save```
+- [x] Make Kubernetes deployment file
+    - match label ```firebase_save```
+    - Set ```GOOGLE_APPLICATION_CREDENTIALS``` environment variable to "./firebasesave/spotifyplaylistgenerator-48abb-firebase-adminsdk-7lvlp-35a28672c7.json"
+    - 1 replica
+
 ---
 ## Redis
 - [x] Make Kubernetes service file

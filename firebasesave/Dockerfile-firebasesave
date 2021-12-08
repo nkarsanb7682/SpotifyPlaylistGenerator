@@ -1,0 +1,14 @@
+FROM python:3.8
+
+RUN cd /tmp && \
+    pip3 install --upgrade pika jsonpickle requests firebase_admin
+
+COPY ./firebase_save.py .
+COPY ./spotifyplaylistgenerator-48abb-firebase-adminsdk-7lvlp-35a28672c7.json .
+
+ENV	FLASK_PORT 5000
+ENV RABBITMQ_HOST rabbitmq
+ENV GOOGLE_APPLICATION_CREDENTIALS ./spotifyplaylistgenerator-48abb-firebase-adminsdk-7lvlp-35a28672c7.json
+ENV PYTHONUNBUFFERED 1
+
+CMD	[ "python3", "firebase_save.py" ]
