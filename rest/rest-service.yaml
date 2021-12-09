@@ -5,11 +5,10 @@ metadata:
   labels:
     app: rest
 spec:
+  type: NodePort
   selector:
     app: rest
-  type: LoadBalancer
   ports:
     - protocol: "TCP"
       port: 5000
       targetPort: 5000
-      nodePort: 30007
