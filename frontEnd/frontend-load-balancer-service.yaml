@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service-label-key: frontend
+  name: frontend
+spec:
+  type: LoadBalancer
+  ports:
+  - name: frontend
+    port: 80
+    protocol: TCP
+  selector:
+    deployment-label-key: frontend
+#  #for creating a deployment in kubernetes
+#  kubectl apply -f frontend-deployment.yaml
+#  #for internal communicating to angualar application
+#  kubectl apply -f frontend-service.yaml
+#  #for access the angular application outside kubernetes
+#  kubectl apply -f frontend-load-balancer-service.yaml
