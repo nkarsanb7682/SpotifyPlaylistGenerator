@@ -4,12 +4,15 @@ import pika
 import datetime
 import random
 import jsonpickle
+from requests import auth
 import spotipy
 from spotipy import oauth2
 from spotipy.oauth2 import SpotifyClientCredentials
 import webbrowser
 import pickle
+import requests
 import urllib.request
+from twill.commands import *
 
 rabbitMQHost = os.getenv("RABBITMQ_HOST") or "localhost"
 print("Connecting to rabbitmq({})".format(rabbitMQHost))
@@ -38,17 +41,19 @@ def login():
     print("START OF LOGIN &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
     sp_oauth = oauth2.SpotifyOAuth(client_id, client_secret, redirect_uri, scope=scope)
     auth_url = sp_oauth.get_authorize_url()
-    print("&&&&&&&&&&&&&&&&&&&&&&&&", urllib.request.urlopen(auth_url).read())
-    code = sp_oauth.parse_response_code(auth_url)
-    print("####################################################")
-    print("####################################################")
-    print("####################################################")
-    print("sp_oauth", sp_oauth)
     print("auth_url", auth_url)
-    print("code", code)
-    print("####################################################")
-    print("####################################################")
-    print("####################################################")
+    go('https://accounts.spotify.com/en/login')
+    showforms()
+    code = sp_oauth.parse_response_code(auth_url)
+    # print("####################################################")
+    # print("####################################################")
+    # print("####################################################")
+    # print("sp_oauth", sp_oauth)
+    # print("auth_url", auth_url)
+    # print("code", code)
+    # print("####################################################")
+    # print("####################################################")
+    # print("####################################################")
 
     # Get access_token
     if code:
